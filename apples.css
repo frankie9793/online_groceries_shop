@@ -1,0 +1,32 @@
+header {
+  background-color: #DDDDDD;
+  text-align: center;
+  font-family: "Times New Roman";
+  color: #0074D9;
+}
+h1{
+
+  font-size: 50px;
+}
+footer{
+  background-color: #DDDDDD;
+  text-align: center;
+}
+input[type=text],
+select{
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+input[type=submit],
+input[type=reset]{
+
+    padding: 10px 30px;
+    font-weight: 300;
+    color: white;
+    background-color: #0074D9;
+    border-radius: 200px;
+
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./apples.css">
+    <title> Fresh fruit market place </title>
+  </head>
+
+  <body>
+    <header>
+      <div class="Heading">
+        <h1> WorldMart </h1>
+        <br>
+        <h2> Freshest Produce You Can Find </h2>
+      </div>
+    </header>
+
+    <section class="body">
+      <form class="orderForm" action="http://localhost/backend.php" method="post">
+        <div class="formtitle">
+          <h2> Your Order Form </h2>
+        </div>
+
+        <div class="usernamesection">
+          <table cellspacing="10">
+            <tr>
+              <td> User Name: </td>
+              <td> <input type="text" name="username" placeholder="Enter Username" required></td>
+            </tr>
+          </table>
+        </div>
+
+        <br>
+
+        <div class="applesection">
+          <table cellspacing="10">
+            <tr>
+              <td> Apple 69c: </td>
+              <td> <input type="text" name="no_of_apple" id="no_of_apple" placeholder="Enter Amount" onchange="checkvalidity(); computetotal();"></td>
+            </tr>
+          </table>
+
+        </div>
+
+        <br>
+
+        <div class="orangesection">
+          <table cellspacing="10">
+            <tr>
+              <td> Orange 59c: </td>
+              <td> <input type="text" name="no_of_orange" id="no_of_orange" placeholder="Enter Amount" onchange="checkvalidity(); computetotal();"></td>
+            </tr>
+          </table>
+
+        </div>
+
+        <br>
+
+        <div class="bananasection">
+          <table cellspacing="10">
+            <tr>
+              <td> Banana 39c: </td>
+              <td> <input type="text" name="no_of_banana" id="no_of_banana" placeholder="Enter Amount" onchange="checkvalidity(); computetotal();"></td>
+            </tr>
+          </table>
+
+        </div>
+
+        <br>
+
+        <div class="totalamount">
+          <table cellspacing="10">
+            <tr>
+              <td> Total Amount (S$): </td>
+              <td> <input type="text" name="total_amount" id="total_amount" placeholder="Total S$" onfocus="this.blur()"></td>
+            </tr>
+          </table>
+
+        </div>
+
+        <br>
+
+        <div class="paymentmethods">
+          <table cellspacing="10">
+            <tr>
+              <td> Payment Method:</td>
+              <td> Visa: <input type="radio" name="payment" value="VISA" checked="checked"></td>
+              <td> MasterCard: <input type="radio" name="payment" value="MASTER" id></td>
+              <td> Discover: <input type="radio" name="payment" value="DISCOVER"></td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="resetandsubmits">
+          <table cellspacing="10">
+            <tr>
+              <td><input type="reset" value="Reset"></td>
+              <td><input type="submit" value="Submit" onclick="return submissionverification();"></td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </section>
+
+    <br>
+
+    <footer>
+      <div class="footerstuff">
+        Thank you for visiting our WorldMart online site!
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+
+      function computetotal() {
+
+        console.log("> computetotal()");
+
+        var apple_quant = document.getElementById("no_of_apple").value;
+        var orange_quant = document.getElementById("no_of_orange").value;
+        var banana_quant = document.getElementById("no_of_banana").value;
+        var totalamt = document.getElementById("total_amount");
+
+        var computed = 0.69*apple_quant + 0.59*orange_quant + 0.39*banana_quant;
+        totalamt.value = computed.toFixed(2);
+
+        return computed;
+
+        console.log(totalamt);
+      }
+
+      function checkvalidity() {
+
+        var apple_quant = document.getElementById("no_of_apple").value;
+        var orange_quant = document.getElementById("no_of_orange").value;
+        var banana_quant = document.getElementById("no_of_banana").value;
+        var totalamt = document.getElementById("total_amount");
+
+        if(apple_quant.match(/^[0-9]+$/) == null && apple_quant != ""){
+            alert("Please Enter a valid input of whole numbers");
+            document.getElementById("no_of_apple").focus();
+            document.getElementById("no_of_apple").select();
+            return false;
+        }
+
+        else if(orange_quant.match(/^[0-9]+$/) == null && orange_quant != ""){
+            alert("Please Enter a valid input of whole numbers");
+            document.getElementById("no_of_orange").focus();
+            document.getElementById("no_of_orange").select();
+            return false;
+        }
+
+        else if(banana_quant.match(/^[0-9]+$/) == null && banana_quant != ""){
+            alert("Please Enter a valid input of whole numbers");
+            document.getElementById("no_of_banana").focus();
+            document.getElementById("no_of_banana").select();
+            return false;
+        }
+
+        return true;
+
+      }
+
+      function checkoutvalidity(){
+
+        var amount = document.getElementById("total_amount").value;
+        if(amount == ""){
+          alert("Your cart is empty.")
+          return false;
+        }
+        else if (amount == NaN){
+          alert("Please Enter a valid input of whole numbers");
+          return false;
+        }
+        return true;
+      }
+
+      function submissionverification(){
+        return(checkvalidity() && checkoutvalidity())
+      }
+
+    </script>
+
+
+
+
+  </body>
+</html>
